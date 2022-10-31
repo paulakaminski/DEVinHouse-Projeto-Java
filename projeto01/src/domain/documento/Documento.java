@@ -94,6 +94,12 @@ public class Documento {
 
     //métodos
 
+    public void validaCampo (String link) {
+        if (link == null || link.trim().isEmpty()) {
+            throw new IllegalArgumentException("O preenchimento do link é obrigatório.");
+        }
+    }
+
     @Override
     public String toString() {
         return "Documento{" +

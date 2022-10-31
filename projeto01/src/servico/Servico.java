@@ -43,15 +43,20 @@ public class Servico {
             case 1:
                 Funcionario func = new Funcionario(0, nome, sobrenome, dataNascimento, cpf, endereco, cargo, tipoAcesso);
                 func.validaCpf(cpf);
+                func.validaCampos(nome, sobrenome, endereco, cargo);
                 break;
             case 2:
                 Supervisor sup = new Supervisor(0, nome, sobrenome, dataNascimento, cpf, endereco, cargo, tipoAcesso);
                 sup.validaCpf(cpf);
+                sup.validaCampos(nome, sobrenome, endereco, cargo);
                 break;
             case 3:
                 Gerente ger = new Gerente(0, nome, sobrenome, dataNascimento, cpf, endereco, cargo, tipoAcesso);
                 ger.validaCpf(cpf);
+                ger.validaCampos(nome, sobrenome, endereco, cargo);
                 break;
+            default:
+                throw new IllegalArgumentException("Operação inválida para cadastro do tipo de acesso, selecione uma opção válida.");
         }
 
         System.out.println("Usuário cadastrado com sucesso");
@@ -64,9 +69,10 @@ public class Servico {
         Date now = new Date();
 
         System.out.print("Insira o link do documento: ");
-        String link = scanner.next();
+        String link = scanner.nextLine();
 
         Documento documento = new Documento(0, usuario.getId(), usuario.getId(), link, "Ativo", now, now);
+        documento.validaCampo(link);
         usuario.cadastrarDocumento(documento);
         System.out.println("Documento cadastrado com sucesso.");
         System.out.println(documento);

@@ -57,6 +57,21 @@ public abstract class Colaborador extends Pessoa {
 
     public abstract void retornarDocumentoArquivado(Integer idDocumento);
 
+    public void validaCampos (String nome, String sobrenome, String endereco, String cargo) {
+        if (nome == null || nome.trim().isEmpty()) {
+            throw new IllegalArgumentException("O preenchimento do campo nome é obrigatório.");
+        }
+        if (sobrenome == null || sobrenome.trim().isEmpty()) {
+            throw new IllegalArgumentException("O preenchimento do campo sobrenome é obrigatório.");
+        }
+        if (endereco == null || endereco.trim().isEmpty()) {
+            throw new IllegalArgumentException("O preenchimento do campo endereço é obrigatório.");
+        }
+        if (cargo == null || cargo.trim().isEmpty()) {
+            throw new IllegalArgumentException("O preenchimento do cargo nome é obrigatório.");
+        }
+    }
+
     @Override
     public String toString() {
         return "Colaborador{" +
